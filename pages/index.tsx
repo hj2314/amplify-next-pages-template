@@ -19,16 +19,6 @@ export default function App() {
     client.models.Todo.delete({ id })
   }
 
-  function updateTodo(todo: Schema["Todo"]["type"]) {
-    const updatedContent = window.prompt("Enter the updated todo content", todo.content);
-    if (updatedContent && updatedContent !== todo.content) {
-      client.models.Todo.update({
-        id: todo.id,
-        content: updatedContent,
-      });
-    }
-  }
-
   useEffect(() => {
     listTodos();
   }, []);
@@ -47,7 +37,6 @@ export default function App() {
             <li key={todo.id} className="todo-item">
               <span>{todo.content}</span>
               <div className="todo-actions">
-                <button onClick={() => updateTodo(todo)}>✏️</button>
                 <button onClick={() => deleteTodo(todo.id)}>🗑️</button>
               </div>
             </li>
