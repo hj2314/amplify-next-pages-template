@@ -19,14 +19,22 @@ export default function App() {
     client.models.Todo.delete({ id })
   }
 
+  function updateTodo(todo: Schema["Todo"]["type"]) {
+    const updatedContent = window.prompt("Enter the updated todo content", todo.content);
+    if (updatedContent && updatedContent !== todo.content) {
+      client.models.Todo.update({
+        id: todo.id,
+        content: updatedContent,
+      });
+    }
+  }
+
   useEffect(() => {
     listTodos();
   }, []);
 
   function createTodo() {
-    client.models.Todo.create({
-      content: window.prompt("Todo content"),
-    });
+    client.models.Todo.create({ content: window.prompt("Todo content"), });
   }
 
   return (
@@ -36,18 +44,15 @@ export default function App() {
         <button onClick={createTodo}>+ new</button>
         <ul>
           {todos.map((todo) => (
-            <li
-              onClick={() => deleteTodo(todo.id)}
-              key={todo.id}>{todo.content}</li>
+            <li key={todo.id} className="todo-item">
+              <span>{todo.content}</span>
+              <div className="todo-actions">
+                <button onClick={() => updateTodo(todo)}>✏️</button>
+                <button onClick={() => deleteTodo(todo.id)}>🗑️</button>
+              </div>
+            </li>
           ))}
         </ul>
-        <div>
-          🥳 App successfully hosted. Try creating a new todo.
-          <br />
-          <a href="https://docs.amplify.aws/gen2/start/quickstart/nextjs-pages-router/">
-            Review next steps of this tutorial.
-          </a>
-        </div>
       </main>
     </Authenticator>
   );

@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background: linear-gradient(180deg, rgb(117, 81, 194), rgb(255, 255, 255));
+  /* background: linear-gradient(180deg, rgb(117, 81, 194), rgb(255, 255, 255)); */
   display: flex;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   height: 100vh;
@@ -13,6 +13,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  min-width: 400px;
 }
 
 button {
@@ -27,9 +28,11 @@ button {
   transition: border-color 0.25s;
   color: white;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -62,4 +65,15 @@ li:hover {
 a {
   font-weight: 800;
   text-decoration: none;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 0.5rem;
 }
