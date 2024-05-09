@@ -28,21 +28,21 @@ export default function App() {
   }
 
   return (
-    <Authenticator>
-      <main>
-        <h1>My todos</h1>
-        <button onClick={createTodo}>+ new</button>
-        <ul>
-          {todos.map((todo) => (
-            <li key={todo.id} className="todo-item">
-              <span>{todo.content}</span>
-              <div className="todo-actions">
-                <button onClick={() => deleteTodo(todo.id)}>🗑️</button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </main>
-    </Authenticator>
+    // <Authenticator>
+    <main>
+      <h1>My todos</h1>
+      <button onClick={createTodo}>+ new</button>
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id} className="todo-item">
+            <span>{todo.content}</span>
+            <div className="todo-actions">
+              <button onClick={() => deleteTodo(todo.id)}>🗑️</button>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </main>
+    // </Authenticator>
   );
 }
